@@ -10,7 +10,7 @@
       <div style='position:absolute;d-isplay:none;width:148px;overflow:hidden;z-index:11;'>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
       </div>
-      <div style='position:relative;dis-play:inline-block;width:calc( 150px * 4 + 12px);overflow-x:scroll;'>
+      <div class=scr style='position:relative;dis-play:inline-block;width:calc( 150px * 3 + 12px);overflow-x:scroll;'>
         <div style='position:relative;m-argin-left:-162px;'>
           <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
           <div class=r></div>
@@ -75,17 +75,20 @@
         <!-- r.innerHTML += ' K<1=' + (K<1); -->
           <!-- r.innerHTML += ' b=' + b.offsetWidth; -->
 
-            if (K < 1){
+            <!-- if (K < 1){ -->
               c.style.transform = 'scale(' + K + ')';
               //               <!-- r.innerHTML += ' c=' + c.offsetWidth; -->
 
               c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
               c.style.top = c.offsetHeight * (K-1) / 2;
+			  
+			  <!-- const scr = document.getElementsByClassName("scr")[0]; -->
+			  <!-- scr.scrollLeft = 100; -->
 
               //               <!-- r.innerHTML += ' K=' + K; -->
               //                 <!-- r.innerHTML += ' left=' + c.style.left; -->
 
-            }
+            <!-- } -->
 
       }
 
