@@ -4,76 +4,88 @@
   </head>
   <body onload=ol() onresize=ol()>
     <div class=c>
-      <!-- <img src="https://stryi.online/wp-content/uploads/2023/10/4.png"> -->
-      <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
-      <div class=r></div>
+      <div style='position:absolute;d-isplay:none;width:162px;overflow:hidden;z-index:1;'>
+        <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
+      </div>  
+      <div style='position:absolute;d-isplay:none;width:148px;overflow:hidden;z-index:11;'>
+        <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
+      </div>
+      <div style='position:relative;dis-play:inline-block;width:calc( 150px * 4 + 12px);overflow-x:scroll;'>
+        <div style='position:relative;m-argin-left:-162px;'>
+          <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
+          <div class=r></div>
+        </div>
+      </div>
     </div>
 
     <style>
       body {
-		width:100%;
-		height:100%;
-		margin: 0px;
+        width:100%;
+        height:100%;
+        margin:0px;
       }
 
       .c {
-        position: relative;
-		width:max-content;
+        position:relative;
+        width:max-content;
+        word-spacing:-1em;
       }
 
       .r {
-		display:none;
+        display:none;z-index:6;
         position: absolute;
         border: 5px solid blue;
         border-radius: 20px;
-		<!-- font-weight: 700; -->
-		<!-- color: blue; -->
       }
     </style>
 
- <script>
+    <script>
       function ol() {
         const r = document.getElementsByClassName("r")[0];
         var d = new Date();
         var D = (d.getDay() + 6) % 7 + 1;  //  1-7
-        var SCh = d.getHours();  //  0-23
-        var SCh = Math.floor((SCh+23) % 24 / 2) + 1;	//	1-12
+        var S = d.getHours();  //  0-23
+        var S = Math.floor((S+23) % 24 / 2) + 1;	//	1-12
 
         <!--         https://api.loe.lviv.ua/media/65d4a853af7c2_22.png -->
         r.style.left = -1 + D * 150;
-        r.style.top = 52 + SCh * 59.6;
+        r.style.top = 52 + S * 59.6;
+        //         r.style.top = 52 + S * 59.6 -835;
         r.style.width = 165;
         r.style.height = 70;
-		r.style.display = 'block';
+        r.style.display = 'block';
 
-        <!-- <!-- https://stryi.online/wp-content/uploads/2023/10/4.png --> -->
-        <!-- r.style.left = -1 + D * 150; -->
-        <!-- r.style.top = 52 + SCh * 59.6; -->
-        <!-- r.style.width = 165; -->
-        <!-- r.style.height = 70; -->
-        
+        //         <!-- <!-- https://stryi.online/wp-content/uploads/2023/10/4.png --> -->
+        //           <!-- r.style.left = -1 + D * 150; -->
+        //             <!-- r.style.top = 52 + SCh * 59.6; -->
+        //               <!-- r.style.width = 165; -->
+        //                 <!-- r.style.height = 70; -->
+
         const b = document.getElementsByTagName("body")[0];
-		const c = document.getElementsByClassName("c")[0];
+        const img = document.getElementsByTagName("img")[0];
+        const c = document.getElementsByClassName("c")[0];
 
         widthK = b.offsetWidth / c.offsetWidth;
         heightK = b.offsetHeight / c.offsetHeight;
-        <!-- r.innerHTML = 'widthK=' + widthK + ' heightK=' + heightK; -->
+        //         <!-- r.innerHTML = 'widthK=' + widthK + ' heightK=' + heightK; -->
 
         K = Math.min( widthK, heightK);
+                  <!-- K = .7; -->
+                  <!-- K = 1; -->
         <!-- r.innerHTML += ' K<1=' + (K<1); -->
-        <!-- r.innerHTML += ' b=' + b.offsetWidth; -->
+          <!-- r.innerHTML += ' b=' + b.offsetWidth; -->
 
-        if (K < 1){
-			c.style.transform = 'scale(' + K + ')';
-            <!-- r.innerHTML += ' c=' + c.offsetWidth; -->
-			
-            c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
-		    c.style.top = c.offsetHeight * (K-1) / 2;
+            if (K < 1){
+              c.style.transform = 'scale(' + K + ')';
+              //               <!-- r.innerHTML += ' c=' + c.offsetWidth; -->
 
-            <!-- r.innerHTML += ' K=' + K; -->
-            <!-- r.innerHTML += ' left=' + c.style.left; -->
+              c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
+              c.style.top = c.offsetHeight * (K-1) / 2;
 
-          }
+              //               <!-- r.innerHTML += ' K=' + K; -->
+              //                 <!-- r.innerHTML += ' left=' + c.style.left; -->
+
+            }
 
       }
 
