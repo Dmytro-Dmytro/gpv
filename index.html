@@ -2,20 +2,20 @@
   <head>
     <title>ГПВ</title>
   </head>
-  <body onload=ol() onresize=ol()>
+  <body onload=ol() onresize=ol() onclick=ol()>
     <div class=c>
-      <div style='position:absolute;d-isplay:none;width:162px;overflow:hidden;z-index:1;'>
+      <div style='position:absolute;width:162px;overflow:hidden;z-index:1;'>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
       </div>  
       <div style='position:absolute;d-isplay:none;width:148px;overflow:hidden;z-index:11;'>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
       </div>
-      <div class=scr style='position:relative;dis-play:inline-block;width:calc( 150px * 3 + 12px);overflow-x:scroll;'>
-        <div style='position:relative;m-argin-left:-162px;'>
-          <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
-          <div class=r></div>
-        </div>
+      <div class=scr style='position:relative;dis-play:inline-block;width:calc(462px - 0px);overflow-x:scroll;' onscroll='os()'>
+        <!--         <div style='position:relative;m-argin-left:-162px;'> -->
+        <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
+        <div class=r></div>
       </div>
+      <!--       </div> -->
     </div>
 
     <style>
@@ -35,17 +35,29 @@
         display:none;z-index:6;
         position: absolute;
         border: 5px solid blue;
-        border-radius: 20px;
+        border-radius: 45px / 40px;
+/*         border-radius: 20px; */
       }
     </style>
 
     <script>
-      function ol() {
         const r = document.getElementsByClassName("r")[0];
-        var d = new Date();
-        var D = (d.getDay() + 6) % 7 + 1;  //  1-7
+        r.style.display = 'block';
+        const d = new Date();
+        const D = (d.getDay() + 6) % 7 + 1;  //  1-7
         var S = d.getHours();  //  0-23
         var S = Math.floor((S+23) % 24 / 2) + 1;	//	1-12
+        const scr = document.getElementsByClassName("scr")[0];
+      
+      function ol() {
+//         const r = document.getElementsByClassName("r")[0];
+//         r.style.display = 'block';
+//         const d = new Date();
+//         const D = (d.getDay() + 6) % 7 + 1;  //  1-7
+//         var S = d.getHours();  //  0-23
+//         var S = Math.floor((S+23) % 24 / 2) + 1;	//	1-12
+
+        //         D = 3;
 
         <!--         https://api.loe.lviv.ua/media/65d4a853af7c2_22.png -->
         r.style.left = -1 + D * 150;
@@ -53,7 +65,6 @@
         //         r.style.top = 52 + S * 59.6 -835;
         r.style.width = 165;
         r.style.height = 70;
-        r.style.display = 'block';
 
         //         <!-- <!-- https://stryi.online/wp-content/uploads/2023/10/4.png --> -->
         //           <!-- r.style.left = -1 + D * 150; -->
@@ -69,29 +80,54 @@
         heightK = b.offsetHeight / c.offsetHeight;
         //         <!-- r.innerHTML = 'widthK=' + widthK + ' heightK=' + heightK; -->
 
-        K = Math.min( widthK, heightK);
-                  <!-- K = .7; -->
-                  <!-- K = 1; -->
+        K = Math.min( widthK, heightK)/1;
+        <!-- K = .7; -->
+        //                   K = 1;
         <!-- r.innerHTML += ' K<1=' + (K<1); -->
           <!-- r.innerHTML += ' b=' + b.offsetWidth; -->
 
-            <!-- if (K < 1){ -->
+            if (K < 1){
               c.style.transform = 'scale(' + K + ')';
               //               <!-- r.innerHTML += ' c=' + c.offsetWidth; -->
 
               c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
               c.style.top = c.offsetHeight * (K-1) / 2;
-			  
-			  <!-- const scr = document.getElementsByClassName("scr")[0]; -->
-			  <!-- scr.scrollLeft = 100; -->
 
+              const scr = document.getElementsByClassName("scr")[0];
+              scr.scrollLeft = 150 * (D-1);
               //               <!-- r.innerHTML += ' K=' + K; -->
               //                 <!-- r.innerHTML += ' left=' + c.style.left; -->
 
-            <!-- } -->
+            }
 
       }
 
+      function os() {
+//         const d = new Date();
+//         const D = (d.getDay() + 6) % 7 + 1;  //  1-7 
+//         const scr = document.getElementsByClassName("scr")[0];
+//         const r = document.getElementsByClassName("r")[0];
+        
+        if (scr.scrollLeft >= 150 * (D+1-1)) {
+           <!-- r.innerHTML += ' sl=' + scr.scrollLeft;  -->
+          r.style.left = -1 + D * 150;
+          r.style.width = 0;
+		  
+        } else if (scr.scrollLeft >= 150 * (D-1)){
+          r.style.left = -1 + D * 150 + (scr.scrollLeft - 150 * (D-1));
+          r.style.width = 165 - (scr.scrollLeft - 150 * (D-1));
+		  
+        } else if (scr.scrollLeft < 150 * (D-1)) {
+           <!-- r.innerHTML += ' sl=' + scr.scrollLeft;  -->
+          r.style.left = -1 + D * 150;
+          r.style.width = 165;
+		  
+        } else {
+          
+          
+        }
+
+      }
     </script>
 
   </body>
