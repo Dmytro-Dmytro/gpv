@@ -2,7 +2,7 @@
   <head>
     <title>ГПВ</title>
   </head>
-  <body onload=ol() onresize=ol() onclick=ol()>
+  <body onload=ol() onresize=ol()>
     <div class=c>
       <div style='position:absolute;width:162px;overflow:hidden;z-index:1;'>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
@@ -86,19 +86,19 @@
         <!-- r.innerHTML += ' K<1=' + (K<1); -->
           <!-- r.innerHTML += ' b=' + b.offsetWidth; -->
 
-            if (K < 1){
+            <!-- if (K < 1){ -->
               c.style.transform = 'scale(' + K + ')';
               //               <!-- r.innerHTML += ' c=' + c.offsetWidth; -->
 
               c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
               c.style.top = c.offsetHeight * (K-1) / 2;
 
-              const scr = document.getElementsByClassName("scr")[0];
+              <!-- const scr = document.getElementsByClassName("scr")[0]; -->
               scr.scrollLeft = 150 * (D-1);
               //               <!-- r.innerHTML += ' K=' + K; -->
               //                 <!-- r.innerHTML += ' left=' + c.style.left; -->
 
-            }
+            <!-- } -->
 
       }
 
