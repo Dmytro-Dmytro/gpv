@@ -2,12 +2,13 @@
   <head>
     <title>ГПВ</title>
   </head>
-  <body onload=ol() onresize=sK()>
+  <body onload=sr();sK(); onresize=sK()>
+        <!-- <img src="https://stryi.online/wp-content/uploads/2023/10/4.png"> -->
     <div class=c>
       <div class=c1>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
       </div>  
-      <div class=c2 onscroll='sr()'>
+      <div class=c2 onscroll=sr()>
         <img src="https://api.loe.lviv.ua/media/65d4a853af7c2_22.png">
         <div class=r></div>
       </div>
@@ -29,19 +30,18 @@
         position:absolute;
         width:162px;
         overflow:hidden;
-        z-index:1;
+        z-index:5;
       }
 
       .c2 {
         position:relative;
         position:relative;
-        overflow-x:scroll;
-        <!-- width:462px; -->
+        overflow-x:auto;
       }
 
       .r {
         display:none;
-        z-index:6;
+        z-index:9;
         position: absolute;
         border: 5px solid blue;
         border-radius: 20px;
@@ -52,34 +52,22 @@
       const r = document.getElementsByClassName("r")[0];
       const d = new Date();
       const D = (d.getDay() + 6) % 7 + 1;  //  1-7
-      var S = d.getHours();  //  0-23
-      var S = Math.floor((S+23) % 24 / 2) + 1;	//	1-12
+      const S = Math.floor((d.getHours()+23) % 24 / 2) + 1;	//	1-12
       const c2 = document.getElementsByClassName("c2")[0];
-      //         D = 3;
-
-      function ol() {
-        sr();
-        sK();
-      }
 
       function sK() {
         const b = document.getElementsByTagName("body")[0];
         const c = document.getElementsByClassName("c")[0];
 
-	  <!-- r.innerHTML = 'c2.width=' + c2.style.width + ' ' + (c2.style.width == ''); -->
 		if (b.offsetWidth > b.offsetHeight){
  		  c2.style.width = '';
 		} else {
 		  K = c2.style.width == '';
           c2.style.width = '462';
-		  if (K) {c2.scrollLeft = 150 * (D-1)}
+		  if (K) {c2.scrollLeft = gss()}
 		}
-	  <!-- r.innerHTML += 'c2.width=' + c2.style.width + ' ' + (c2.style.width == ''); -->
 		
-        widthK = b.offsetWidth / c.offsetWidth;
-        heightK = b.offsetHeight / c.offsetHeight;
-
-        K = Math.min( widthK, heightK);
+        K = Math.min( b.offsetWidth / c.offsetWidth, b.offsetHeight / c.offsetHeight);
 //        K = 0.7;
         c.style.transform = 'scale(' + K + ')';
         c.style.left = ( b.offsetWidth - c.offsetWidth)/2;
@@ -88,8 +76,7 @@
       }
 
       function sr() {
-//         https://api.loe.lviv.ua/media/65d4a853af7c2_22.png
-        K = c2.scrollLeft - 150 * (D-1);
+        K = c2.scrollLeft - gss();
 
         if (K - 150 >= 0) {
           r.style.display = 'none';
@@ -97,20 +84,19 @@
         } else {
           K = K > 0 ? K : 0;
 		  
+//         https://api.loe.lviv.ua/media/65d4a853af7c2_22.png
           r.style.left = -1 + D * 150 + K;
           r.style.width = 165 - K;
           r.style.top = 52 + S * 59.6;
           r.style.height = 70;
-		  
+
           r.style.display = 'block';
 		
         }
+      }
 
-        //         https://stryi.online/wp-content/uploads/2023/10/4.png
-        //         r.style.left = -1 + D * 150;
-        //         r.style.top = 52 + SCh * 59.6;
-        //         r.style.width = 165;
-        //         r.style.height = 70;
+      function gss() {
+	    return 150 * (D-1);
       }
 
     </script>
